@@ -14,8 +14,8 @@ echo autossh \
  -o ServerAliveInterval=5 \
  -o ServerAliveCountMax=1 \
  -t -t \
- -i /id_rsa \
- -L ${SSH_TUNNEL_BIND_PORT}:${SSH_TUNNEL_HOST}:${SSH_TUNNEL_HOST_PORT}
+ -i ${IDENTITY_FILE:="/id_rsa"} \
+ -L 0.0.0.0:${SSH_TUNNEL_BIND_PORT}:${SSH_TUNNEL_HOST}:${SSH_TUNNEL_HOST_PORT} \
  -p ${SSH_HOSTPORT:=22} \
  ${SSH_HOSTUSER}@${SSH_HOSTNAME}
 
@@ -29,7 +29,7 @@ autossh \
  -o ServerAliveInterval=5 \
  -o ServerAliveCountMax=1 \
  -t -t \
- -i /id_rsa \
- -L ${SSH_TUNNEL_BIND_PORT}:${SSH_TUNNEL_HOST}:${SSH_TUNNEL_HOST_PORT}
+ -i ${IDENTITY_FILE} \
+ -L 0.0.0.0:${SSH_TUNNEL_BIND_PORT}:${SSH_TUNNEL_HOST}:${SSH_TUNNEL_HOST_PORT} \
  -p ${SSH_HOSTPORT:=22} \
  ${SSH_HOSTUSER}@${SSH_HOSTNAME}
