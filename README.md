@@ -89,7 +89,7 @@ Specify the usename on the *remote* endpoint.  (Default: `root`)
 Specify the address (ip preferred) of the *remote* endpoint. (Default:
 `localhost`)
 
-#### SSH_TUNNEL_REMOTE
+#### SSH_TUNNEL_BIND_PORT
 
 Specify the port number on the *remote* endpoint which will serve as the
 tunnel entrance. (Default: random > 32768)  If you do not want a new port
@@ -100,7 +100,7 @@ this.
 
 Specify the address (ip preferred) of the *target*.
 
-#### SSH_TUNNEL_LOCAL
+#### SSH_TUNNEL_HOST_PORT
 
 Specify the port number on the *target* endpoint which will serve as the
 tunnel exit, or destination service.  Typically this is `ssh` (port: 22),
@@ -141,9 +141,9 @@ docker host, and onto the private lan where the connection will terminate
         environment:
           - SSH_HOSTUSER=sshuser
           - SSH_HOSTNAME=203.0.113.10
-          - SSH_TUNNEL_REMOTE=2222
+          - SSH_TUNNEL_BIND_PORT=2222
           - SSH_TUNNEL_HOST=172.17.0.1
-          - SSH_TUNNEL_LOCAL=22
+          - SSH_TUNNEL_HOST_PORT=22
         restart: always
         volumes:
          - /etc/autossh/id_rsa:/id_rsa
@@ -157,9 +157,9 @@ docker host, and onto the private lan where the connection will terminate
         environment:
           - SSH_HOSTUSER=sshuser
           - SSH_HOSTNAME=203.0.113.10
-          - SSH_TUNNEL_REMOTE=22222
+          - SSH_TUNNEL_BIND_PORT=22222
           - SSH_TUNNEL_HOST=198.168.123.45
-          - SSH_TUNNEL_LOCAL=22
+          - SSH_TUNNEL_HOST_PORT=22
         restart: always
         volumes:
           - /etc/autossh/id_rsa:/id_rsa
