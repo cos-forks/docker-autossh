@@ -13,7 +13,7 @@ echo autossh \
  -o StrictHostKeyChecking=no \
  -o ServerAliveInterval=5 \
  -o ServerAliveCountMax=1 \
- -t -t \
+ -N \
  -i ${IDENTITY_FILE:="/id_rsa"} \
  -L 0.0.0.0:${SSH_TUNNEL_BIND_PORT}:${SSH_TUNNEL_HOST}:${SSH_TUNNEL_HOST_PORT} \
  -p ${SSH_HOSTPORT:=22} \
@@ -28,7 +28,7 @@ autossh \
  -o StrictHostKeyChecking=no \
  -o ServerAliveInterval=5 \
  -o ServerAliveCountMax=1 \
- -t -t \
+ -N \
  -i ${IDENTITY_FILE} \
  -L 0.0.0.0:${SSH_TUNNEL_BIND_PORT}:${SSH_TUNNEL_HOST}:${SSH_TUNNEL_HOST_PORT} \
  -p ${SSH_HOSTPORT:=22} \
